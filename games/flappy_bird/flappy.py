@@ -10,7 +10,7 @@ GRAVITY = 2.5
 GAME_SPEED = 15
 
 GROUND_WIDHT = 2 * SCREEN_WIDHT
-GROUND_HEIGHT= 100
+GROUND_HEIGHT= 100.   
 
 PIPE_WIDHT = 80
 PIPE_HEIGHT = 500
@@ -73,7 +73,7 @@ class Pipe(pygame.sprite.Sprite):
 
 
         self.rect = self.image.get_rect()
-        self.rect[0] = xpos
+        self.rect[0] = xpos  
 
         if inverted:
             self.image = pygame.transform.flip(self.image, False, True)
