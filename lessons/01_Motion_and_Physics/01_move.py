@@ -14,9 +14,9 @@ pygame.init()
 # Constants
 SCREEN_WIDTH, SCREEN_HEIGHT = 600, 600
 CIRCLE_SIZE = 50
-CIRCLE_SIZE_COLOR = (0, 128, 255) # Red-Green-Blue color in the range 0-255
+CIRCLE_COLOR = (0, 128, 255) # Red-Green-Blue color in the range 0-255
 BACKGROUND_COLOR = (255, 255, 255) # White
-CIRCLE_SIZE_SPEED = 5
+CIRCLE_SPEED = 5
 FPS = 60
 
 # Initialize the screen
@@ -50,13 +50,13 @@ def main():
 
         # Move the square based on arrow keys
         if keys[pygame.K_LEFT]:
-            circle_x -= CIRCLE_SIZE_SPEED
+            circle_x -= CIRCLE_SPEED
         if keys[pygame.K_RIGHT]:
-            circle_x += CIRCLE_SIZE_SPEED
+            circle_x += CIRCLE_SPEED
         if keys[pygame.K_UP]:
-            circle_y -= CIRCLE_SIZE_SPEED
+            circle_y -= CIRCLE_SPEED
         if keys[pygame.K_DOWN]:
-            circle_y += CIRCLE_SIZE_SPEED
+            circle_y += CIRCLE_SPEED
 
         # Prevent the square from going off the screen
         circle_x = max(0, min(SCREEN_WIDTH - CIRCLE_SIZE, circle_x))
@@ -68,7 +68,7 @@ def main():
 #        screen.fill(BACKGROUND_COLOR)
 
         # Draw the square
-        pygame.draw.rect(screen, CIRCLE_SIZE_COLOR, (circle_x, circle_y, CIRCLE_SIZE, CIRCLE_SIZE))
+        pygame.draw.rect(screen, CIRCLE_COLOR, (circle_x, circle_y, CIRCLE_SIZE, CIRCLE_SIZE))
 
         # Update the display. Imagine that the screen is two different whiteboards. One
         # whiteboard is currently visible to the player, and the other whiteboard is being
