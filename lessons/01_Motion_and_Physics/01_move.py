@@ -46,8 +46,8 @@ def main():
         
         # Get the keys pressed. Gtes an array of all the keys
         # with a boolean value of whether they are pressed or not
+        #keys = pygame.key.get_pressed()
         keys = pygame.key.get_pressed()
-
         # Move the square based on arrow keys
         if keys[pygame.K_LEFT]:
             circle_x -= CIRCLE_SPEED
@@ -65,11 +65,11 @@ def main():
         # This will clear the screen by filling it 
         # with the background color. If we didn't do this, 
         # the square would leave a trail behind it.
-#        screen.fill(BACKGROUND_COLOR)
+        #screen.fill(BACKGROUND_COLOR)
 
         # Draw the square
-        pygame.draw.rect(screen, CIRCLE_COLOR, (circle_x, circle_y, CIRCLE_SIZE, CIRCLE_SIZE))
-
+        #pygame.draw.rect(screen, CIRCLE_COLOR, (circle_x, circle_y, CIRCLE_SIZE, CIRCLE_SIZE))
+        pygame.draw.circle(screen, CIRCLE_COLOR, (circle_x, circle_y),40)
         # Update the display. Imagine that the screen is two different whiteboards. One
         # whiteboard is currently visible to the player, and the other whiteboard is being
         # drawn on. When you call pygame.display.flip(), it's like taking the whiteboard
