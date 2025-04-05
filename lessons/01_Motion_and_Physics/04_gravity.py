@@ -13,6 +13,8 @@ from dataclasses import dataclass
 pygame.init()
 
 
+
+
 # This is a data class, one way of storing settings and constants for a game.
 # We will create an instance of the data class, but since there is only one of
 # them, we could also use the class directly, like GameSettings.screen_width.
@@ -32,6 +34,8 @@ class GameSettings:
     black: tuple = (0, 0, 0)
     tick_rate: int = 30 # Frames per second
 
+keys = pygame.key.get_pressed()
+SQUARE_SPEED = 5
 # Initialize game settings
 settings = GameSettings()
 
@@ -53,21 +57,33 @@ running = True
 clock = pygame.time.Clock()
 
 while running:
-
+    keys = pygame.key.get_pressed()
     # Handle events, such as quitting the game
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            running = False                            
 
     # Continuously jump. If the player is not jumping, initialize a new jump
-    if is_jumping is False:
+    if is_jumping is False and keys[pygame.K_SPACE]:
         # Jumping means that the player is going up. The top of the 
         # screen is y=0, and the bottom is y=SCREEN_HEIGHT. So, to go up,
         # we need to have a negative y velocity
         player_y_velocity = -settings.jump_velocity
         is_jumping = True
+    if keys[pygame.K_LEFT]:
+        player.x -= SQUARE_SPEED
+    if keys[pygame.K_RIGHT]:
+        player.x += SQUARE_SPEED
+    if keys[pygame.K_RCTRL]:
+        
+    if keys[pygame.K_LCTRL]:
+   
+   #keys
 
-    # Update player position. Gravity is always pulling the player down,
+
+   
+   
+   # Update player position. Gravity is always pulling the player down,
     # which is the positive y direction, so we add GRAVITY to the y velocity
     # to make the player go up more slowly. Eventually, the player will have
     # a positive y velocity, and gravity will pull the player down.
