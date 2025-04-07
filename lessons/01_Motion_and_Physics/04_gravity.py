@@ -74,12 +74,9 @@ while running:
         player.x -= SQUARE_SPEED
     if keys[pygame.K_RIGHT]:
         player.x += SQUARE_SPEED
-    if keys[pygame.K_RCTRL]:
-        
-    if keys[pygame.K_LCTRL]:
+    if keys[pygame.K_LCTRL] or keys[pygame.K_RCTRL]:
+        player_y_velocity = -settings.jump_velocity
    
-   #keys
-
 
    
    
