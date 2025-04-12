@@ -12,8 +12,8 @@ from dataclasses import dataclass
 # Initialize Pygame
 pygame.init()
 
-
-
+vec = pygame.math.Vector2
+player_velocity = vec(0, 0)
 
 # This is a data class, one way of storing settings and constants for a game.
 # We will create an instance of the data class, but since there is only one of
@@ -56,6 +56,9 @@ is_jumping = False
 running = True
 clock = pygame.time.Clock()
 
+
+                                    
+
 while running:
     keys = pygame.key.get_pressed()
     # Handle events, such as quitting the game
@@ -64,19 +67,34 @@ while running:
             running = False                            
 
     # Continuously jump. If the player is not jumping, initialize a new jump
-    if is_jumping is False and keys[pygame.K_SPACE]:
         # Jumping means that the player is going up. The top of the 
         # screen is y=0, and the bottom is y=SCREEN_HEIGHT. So, to go up,
         # we need to have a negative y velocity
-        player_y_velocity = -settings.jump_velocity
+    if not is_jumping and keys[pygame.K_SPACE]:
+        player_velocity.y = -settings.jump_velocity
         is_jumping = True
+
+# Left/right movement
     if keys[pygame.K_LEFT]:
         player.x -= SQUARE_SPEED
     if keys[pygame.K_RIGHT]:
         player.x += SQUARE_SPEED
     if keys[pygame.K_LCTRL] or keys[pygame.K_RCTRL]:
-        player_y_velocity = -settings.jump_velocity
-   
+        # Higher jump with CTRL
+        player_velocity.y = -settings.jump_velocity * 1.5  
+
+
+# Apply gravity and friction
+    player_velocity.y += settings.gravity
+    player_velocity *= 0.99
+    player.y += player_velocity.y
+
+# Ground collision
+    if player.bottom >= settings.screen_height:
+        player.bottom = settings.screen_height
+        player_velocity.y = 0
+        is_jumping = False
+
 
    
    
