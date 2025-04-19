@@ -1,13 +1,30 @@
 """ Turtle in Pygame
-
+github.com refused to connect.
+github.com refused to connect.
 We really miss the turtle module from Python's standard library. It was a great
 way to introduce programming, so let's make something similar in PyGame, using
 objects. 
 
 """
 import math
-
+import turtle
 import pygame
+
+player = turtle.Turtle()
+
+#variables
+TOMTHETURTLE_SPEED = 5
+
+class GameSettings:
+    screen_width: int = 500
+    screen_height: int = 500
+    player_size: int = 10
+    player_x: int = 100 
+    white: tuple = (255, 255, 255)
+    black: tuple = (0, 0, 0)
+    tick_rate: int = 30
+    
+settings = GameSettings()
 
 
 def event_loop():
@@ -16,6 +33,7 @@ def event_loop():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+    
 
 class Turtle:
     def __init__(self, screen, x: int, y: int):
@@ -45,12 +63,15 @@ class Turtle:
     def left(self, angle):
         # Turn left by adjusting the angle counterclockwise
         self.angle = (self.angle + angle) % 360
-
+    
+    
 
 # Main loop
 
 # Initialize Pygame
 pygame.init()
+
+
 
 # Screen dimensions and setup
 width, height = 500, 500
@@ -66,8 +87,15 @@ turtle = Turtle(screen, screen.get_width() // 2, screen.get_height() // 2)  # St
 
 # Draw a square using turtle-style commands
 for _ in range(4):
-    turtle.forward(100)  # Move forward by 100 pixels
-    turtle.left(90)  # Turn left by 90 degrees
+    turtle.forward(10)  # Move forward by 100 pixels
+
+
+keys = pygame.key.get_pressed()
+
+if keys[pygame.K_RIGHT]:
+            player.x += TOMTHETURTLE_SPEED
+if keys[pygame.K_LEFT]:
+            player.x -= TOMTHETURTLE_SPEED
 
 # Display the drawing
 pygame.display.flip()
