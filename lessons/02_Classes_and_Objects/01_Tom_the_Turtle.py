@@ -12,6 +12,7 @@ import pygame
 
 player = turtle.Turtle()
 
+
 #variables
 TOMTHETURTLE_SPEED = 5
 
@@ -65,7 +66,9 @@ class Turtle:
         self.angle = (self.angle + angle) % 360
     
     
-
+class NewTurtle(Turtle):
+     
+     
 # Main loop
 
 # Initialize Pygame
