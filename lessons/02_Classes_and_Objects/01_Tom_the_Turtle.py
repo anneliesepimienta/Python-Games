@@ -16,6 +16,7 @@ player = turtle.Turtle()
 #variables
 TOMTHETURTLE_SPEED = 5
 
+
 class GameSettings:
     screen_width: int = 500
     screen_height: int = 500
@@ -64,10 +65,16 @@ class Turtle:
     def left(self, angle):
         # Turn left by adjusting the angle counterclockwise
         self.angle = (self.angle + angle) % 360
-    
+
+running = True 
+keys = pygame.key.get_pressed()   
     
 class NewTurtle(Turtle):
-     
+    while running:   
+        keys[pygame.K_RIGHT]:
+            player.x += TOMTHETURTLE_SPEED
+        keys[pygame.K_LEFT]:
+            player.x -= TOMTHETURTLE_SPEED
      
 # Main loop
 
