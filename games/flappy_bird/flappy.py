@@ -1,6 +1,6 @@
 import pygame, random, time
 from pygame.locals import *
-from pathlib import Path
+from pathlib import Path       
 
 #VARIABLES
 SCREEN_WIDHT = 400
