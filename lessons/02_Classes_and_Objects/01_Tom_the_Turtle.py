@@ -70,11 +70,17 @@ running = True
 keys = pygame.key.get_pressed()   
     
 class NewTurtle(Turtle):  
-    keys[pygame.K_RIGHT]:
-        player.x += TOMTHETURTLE_SPEED
-    keys[pygame.K_LEFT]:
-        player.x -= TOMTHETURTLE_SPEED
-     
+    def __init__(self, screen, x, y):
+        super().__init__(screen, x, y)
+    if keys[pygame.K_LEFT]:
+        x -= TOMTHETURTLE_SPEED
+    if keys[pygame.K_RIGHT]:
+        x += TOMTHETURTLE_SPEED
+    if keys[pygame.K_SPACE]:
+         player.penup()
+    if keys[pygame.K_RSHIFT]:
+         player.pendown()
+    color = player.pencolor("black")
 # Main loop
 
 # Initialize Pygame
