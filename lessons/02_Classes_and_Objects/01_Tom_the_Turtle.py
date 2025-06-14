@@ -1,40 +1,24 @@
 """ Turtle in Pygame
 github.com refused to connect.
 github.com refused to connect.
-We really miss the turtle module from Python's standard library. It was a great
+We really miss the turtle module from Python's
+import pygame
+ standard library. It was a great
 way to introduce programming, so let's make something similar in PyGame, using
 objects. 
 
 """
 import math
-import turtle
 import pygame
-
-player = turtle.Turtle()
+pygame.init()
 
 
 #variables
 TOMTHETURTLE_SPEED = 5
 
 
-class GameSettings:
-    screen_width: int = 500
-    screen_height: int = 500
-    player_size: int = 10
-    player_x: int = 100 
-    white: tuple = (255, 255, 255)
-    black: tuple = (0, 0, 0)
-    tick_rate: int = 30
-    
-settings = GameSettings()
 
 
-def event_loop():
-    """Wait until user closes the window"""
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                return
     
 
 class Turtle:
@@ -74,9 +58,49 @@ class NewTurtle(Turtle):
         super().__init__(screen, x, y)
         self.color = "black"
 
+    def forward(self, distance):
+        # Calculate new position based on current angle
+        radian_angle = math.radians(self.angle)
+
+        start_x = self.x  # Save the starting position
+        start_y = self.y
+
+        # Calculate the new position displacement
+        dx = math.cos(radian_angle) * distance
+        dy = math.sin(radian_angle) * distance
+
+        # Update the turtle's position
+        self.x += dx
+        self.y -= dy
+
+        # Draw line to the new position
+        pygame.draw.line(self.screen, self.color, (start_x, start_y), (self.x, self.y), 2)
+
     def right(self, angle):
          self.angle = (self.angle - angle) % 360
 
+    def set_color(self, color):
+        self.color = color
+
+    def pen_up(self,)
+
+def event_loop(player):
+    """Wait until user closes the window"""
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return
+        
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_RIGHT]:
+                    player.right(1)
+        if keys[pygame.K_LEFT]:
+                    player.left(1)
+        if keys[pygame.K_UP]:
+                    player.forward(1)
+        
+        pygame.display.flip()
 
 # Main loop
 
@@ -95,25 +119,17 @@ white = (255, 255, 255)
 black = (0, 0, 0)
 
 screen.fill(white)
-turtle = Turtle(screen, screen.get_width() // 2, screen.get_height() // 2)  # Start at the center of the screen
+turtle = NewTurtle(screen, screen.get_width() // 2, screen.get_height() // 2)  # Start at the center of the screen
 
 # Draw a square using turtle-style commands
 for _ in range(4):
     turtle.forward(10)  # Move forward by 100 pixels
 
-
-keys = pygame.key.get_pressed()
-
-if keys[pygame.K_RIGHT]:
-            player.x += TOMTHETURTLE_SPEED
-if keys[pygame.K_LEFT]:
-            player.x -= TOMTHETURTLE_SPEED
-
 # Display the drawing
 pygame.display.flip()
 
 # Wait to quit
-event_loop()
+event_loop(turtle)
 
 # Quit Pygame
 pygame.quit()
