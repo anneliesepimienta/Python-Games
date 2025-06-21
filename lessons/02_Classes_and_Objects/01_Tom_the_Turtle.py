@@ -7,7 +7,7 @@ import pygame
 way to introduce programming, so let's make something similar in PyGame, using
 objects. 
 
-"""
+""" 
 import math
 import pygame
 pygame.init()
@@ -16,6 +16,7 @@ pygame.init()
 #variables
 TOMTHETURTLE_SPEED = 5
 
+clock = pygame.time.Clock()
 
 
 
@@ -57,6 +58,7 @@ class NewTurtle(Turtle):
     def __init__(self, screen, x, y):
         super().__init__(screen, x, y)
         self.color = "black"
+        self.pen_up_or_down = True
 
     def forward(self, distance):
         # Calculate new position based on current angle
@@ -74,18 +76,24 @@ class NewTurtle(Turtle):
         self.y -= dy
 
         # Draw line to the new position
-        pygame.draw.line(self.screen, self.color, (start_x, start_y), (self.x, self.y), 2)
+        if self.pen_up_or_down:
+            pygame.draw.line(self.screen, self.color, (start_x, start_y), (self.x, self.y), 2)
 
     def right(self, angle):
-         self.angle = (self.angle - angle) % 360
+        self.angle = (self.angle - angle) % 360
 
     def set_color(self, color):
         self.color = color
 
-    def pen_up(self,)
+    def pen_up_down(self):
+        self.pen_up_or_down =not (self.pen_up_or_down)
+
+
+        
 
 def event_loop(player):
     """Wait until user closes the window"""
+    last_switch = pygame.time.get_ticks()
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -99,6 +107,10 @@ def event_loop(player):
                     player.left(1)
         if keys[pygame.K_UP]:
                     player.forward(1)
+        if keys[pygame.K_SPACE] and pygame.time.get_ticks() - last_switch > 10:
+             player.pen_up_down()
+             print(player.pen_up_or_down)
+             last_switch = pygame.time.get_ticks()
         
         pygame.display.flip()
 
