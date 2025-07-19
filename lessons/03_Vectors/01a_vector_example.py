@@ -33,6 +33,12 @@ start_1 = draw_v20(screen, v0, v1)
 v2 = v1.rotate(90)
 start_1 = draw_v20(screen, start_1, v2)
 
+v3 = v2.rotate(90)
+start_1 = draw_v20(screen, start_1, v3)
+
+v4 = v3.rotate(90)
+start_1 = draw_v20(screen, start_1, v4)
+
 
 # start = draw_v20(screen, v0, v1)
 # start = draw_v20(screen, start, v2)
