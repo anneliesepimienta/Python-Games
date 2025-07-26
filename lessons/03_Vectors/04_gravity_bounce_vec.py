@@ -35,6 +35,7 @@ class GameSettings:
     player_jump_velocity: float = 15
     frame_rate: int = 15
 
+    player_start_y_drag = player_v_x: float -velocity *0.1
 
 class Game:
     """Main object for the top level of the game. Holds the main loop and other
