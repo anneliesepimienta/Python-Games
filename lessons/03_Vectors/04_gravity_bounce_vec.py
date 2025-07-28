@@ -35,7 +35,6 @@ class GameSettings:
     player_jump_velocity: float = 15
     frame_rate: int = 15
 
-    player_start_y_drag = player_v_x: float -velocity *0.1
 
 class Game:
     """Main object for the top level of the game. Holds the main loop and other
@@ -93,7 +92,8 @@ class Player:
         # Player's velocity
         self.vel = pygame.Vector2(settings.player_v_x, settings.player_v_y)  # Velocity vector
 
-
+        #thrust
+        self.vel = pygame.Vector2(0, 2)
 
     # Direction functions. IMPORTANT! Using these functions isn't really
     # necessary, but it makes the code more readable. You could just use
@@ -142,11 +142,17 @@ class Player:
         self.update_jump()
         self.update_v()
         self.update_pos()
+        self.update_imput
         
     def update_v(self):
         """Update the player's velocity based on gravity and bounce on edges"""
          
         self.vel += self.game.gravity  # Add gravity to the velocity
+
+        drag = -self.vel * 0.1
+    
+        
+        self.vel += drag
 
         if self.at_bottom() and self.going_down():
             self.vel.y = 0
@@ -188,8 +194,7 @@ class Player:
         
         # Notice that we've gotten rid of self.is_jumping, because we can just
         # check if the player is at the bottom. 
-        if self.at_bottom():
-            self.vel += self.v_jump
+        
          
 
     def draw(self, screen):
