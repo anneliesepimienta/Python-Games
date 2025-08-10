@@ -93,7 +93,11 @@ class Player:
         self.vel = pygame.Vector2(settings.player_v_x, settings.player_v_y)  # Velocity vector
 
         #thrust
-        self.vel = pygame.Vector2(0, 2)
+        self.vel = pygame.Vector2(20, -20)
+
+        self.drag = pygame.Vector2(1, 1)
+
+        
 
     # Direction functions. IMPORTANT! Using these functions isn't really
     # necessary, but it makes the code more readable. You could just use
@@ -142,14 +146,14 @@ class Player:
         self.update_jump()
         self.update_v()
         self.update_pos()
-        self.update_imput
-        
+               
     def update_v(self):
         """Update the player's velocity based on gravity and bounce on edges"""
          
         self.vel += self.game.gravity  # Add gravity to the velocity
 
-        drag = -self.vel * 0.1
+        drag = -self.vel * 0.0000000000000000000000000000000000000000000000000000000000
+
     
         
         self.vel += drag

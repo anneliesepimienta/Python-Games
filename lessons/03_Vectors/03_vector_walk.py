@@ -17,7 +17,7 @@ class Settings:
     FPS = 30
     ANGLE_CHANGE = 3
     LENGTH_CHANGE = 5
-    INITIAL_LENGTH = 100
+    INITIAL_LENGTH = 100 
     FONT_SIZE = 24
 
 # Initialize screen
