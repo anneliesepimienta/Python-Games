@@ -152,8 +152,7 @@ class Player:
          
         self.vel += self.game.gravity  # Add gravity to the velocity
 
-        drag = -self.vel * 0.0000000000000000000000000000000000000000000000000000000000
-
+        drag = -self.vel * 0.1
     
         
         self.vel += drag
@@ -194,8 +193,10 @@ class Player:
             self.pos.x = self.game.settings.width - self.width
 
     def update_jump(self):
+        if keys[pygame.K_SPACE]:
+            
+
         """Handle the player's jumping logic"""
-        
         # Notice that we've gotten rid of self.is_jumping, because we can just
         # check if the player is at the bottom. 
         
