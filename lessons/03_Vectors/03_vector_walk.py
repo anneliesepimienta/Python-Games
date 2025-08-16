@@ -42,7 +42,7 @@ class Player:
         self.position = pygame.math.Vector2(x, y)
         self.direction_vector = pygame.math.Vector2(Settings.INITIAL_LENGTH, 0)  # Initial direction vector
 
-        self.thrust = pygame.math.Vector2(0, 1)
+        
 
     def draw(self, show_line=True):
         """Draws the player and the direction vector on the screen."""

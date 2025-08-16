@@ -96,6 +96,7 @@ class Player:
         self.vel = pygame.Vector2(20, -20)
 
         self.drag = pygame.Vector2(1, 1)
+        self.thrust = pygame.maty.Vector2(0, -1)
 
         
 
@@ -143,7 +144,7 @@ class Player:
     
     def update(self):
         """Update player position, continuously jumping"""
-        self.update_jump()
+        self.jump()
         self.update_v()
         self.update_pos()
                
@@ -192,9 +193,8 @@ class Player:
         elif self.at_right():
             self.pos.x = self.game.settings.width - self.width
 
-    def update_jump(self):
-        if keys[pygame.K_SPACE]:
-            
+    def jump(self):
+        
 
         """Handle the player's jumping logic"""
         # Notice that we've gotten rid of self.is_jumping, because we can just
