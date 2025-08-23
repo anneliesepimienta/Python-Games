@@ -129,6 +129,7 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
                 
+                
         # Draw the player and the direction vector
         player.draw()
 

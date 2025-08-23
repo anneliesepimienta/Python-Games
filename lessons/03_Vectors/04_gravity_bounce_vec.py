@@ -96,7 +96,7 @@ class Player:
         self.vel = pygame.Vector2(20, -20)
 
         self.drag = pygame.Vector2(1, 1)
-        self.thrust = pygame.maty.Vector2(0, -1)
+        self.thrust = pygame.math.Vector2(0, -1)
 
         
 
@@ -120,6 +120,9 @@ class Player:
     def going_right(self):
         """Check if the player is going right"""
         return self.vel.x > 0
+    
+    if keys[pygame.K_SPACE]:
+            player.move()
     
     
     # Location Fuctions
