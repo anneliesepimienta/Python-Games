@@ -120,10 +120,7 @@ class Player:
     def going_right(self):
         """Check if the player is going right"""
         return self.vel.x > 0
-    
-    if keys[pygame.K_SPACE]:
-            player.move()
-    
+
     
     # Location Fuctions
     
@@ -147,6 +144,7 @@ class Player:
     
     def update(self):
         """Update player position, continuously jumping"""
+        self.keys = pygame.key.get_pressed()
         self.jump()
         self.update_v()
         self.update_pos()
@@ -197,12 +195,12 @@ class Player:
             self.pos.x = self.game.settings.width - self.width
 
     def jump(self):
-        
-
         """Handle the player's jumping logic"""
         # Notice that we've gotten rid of self.is_jumping, because we can just
         # check if the player is at the bottom. 
-        
+        if self.keys[pygame.K_SPACE]:
+            self.vel.y += self.v_jump
+    
          
 
     def draw(self, screen):
