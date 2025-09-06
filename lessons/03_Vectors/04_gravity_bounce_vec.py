@@ -10,7 +10,6 @@ understandable, and makes it easier to add more complex features to the game.
 import pygame
 from dataclasses import dataclass
 
-
 class Colors:
     """Constants for Colors"""
     WHITE = (255, 255, 255)
@@ -33,7 +32,7 @@ class GameSettings:
     player_width: int = 20
     player_height: int = 20
     player_jump_velocity: float = 15
-    frame_rate: int = 15
+    frame_rate: int = 30
 
 
 class Game:
@@ -201,7 +200,7 @@ class Player:
         if self.keys[pygame.K_SPACE]:
             self.vel.y += self.v_jump
     
-         
+    
 
     def draw(self, screen):
         pygame.draw.rect(screen, Colors.PLAYER_COLOR, (self.pos.x, self.pos.y, self.width, self.height))
