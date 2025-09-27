@@ -195,16 +195,18 @@ class Player:
 
     def jump(self):    
         """Handle the player's jumping logic"""
-        # Notice that we've gotten rid of self.is_jumping, because we can just
+        # Notice that we've gotten rid  of self.is_jumping, because we can just
         # check if the player is at the bottom. 
         if self.keys[pygame.K_SPACE]:
-            self.vel += self.v_jump
+           self.vel += self.v_jump
+
+
     
-    
+           
  
     def draw(self, screen):
         pygame.draw.rect(screen, Colors.PLAYER_COLOR, (self.pos.x, self.pos.y, self.width, self.height))
-
+        pygame.draw.line(screen, Colors.RED, self.pos, self.pos + self.vel*3, 2)
 
 settings = GameSettings()
 game = Game(settings)
